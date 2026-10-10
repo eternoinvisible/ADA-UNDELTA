@@ -1,0 +1,352 @@
+/* ==========================================================================
+   1. Global Variables
+   ========================================================================== */
+
+:root {
+    --bg-overlay: rgba(0, 0, 0, 0.7);
+    --bg-popup: rgba(0, 0, 0, 0.9);
+    --bg-btn: rgba(255, 255, 255, 0.2);
+    --bg-btn-hover: rgba(255, 255, 255, 0.4);
+
+    --text-light: white;
+
+    --border-light: 1px solid rgba(255, 255, 255, 0.3);
+    --border-btn: 1px solid rgba(255, 255, 255, 0.5);
+
+    --radius-container: 15px;
+    --radius-btn: 5px;
+}
+
+/* ==========================================================================
+   2. Main Layout Components
+   ========================================================================== */
+
+#permanent-overlay {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80%;
+    max-width: 900px;
+    background-color: var(--bg-overlay);
+    border: var(--border-light);
+    border-radius: var(--radius-container);
+    color: var(--text-light);
+    font-family: 'Arial', sans-serif;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    z-index: 20;
+}
+
+#help-popup {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 80%;
+    max-width: 600px;
+    background-color: var(--bg-popup);
+    border: var(--border-light);
+    border-radius: var(--radius-container);
+    color: var(--text-light);
+    padding: 30px;
+    text-align: center;
+    z-index: 30;
+}
+
+/* ==========================================================================
+   3. Component Sections & Containers
+   ========================================================================== */
+
+.overlay-section {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0 20px;
+    border-right: var(--border-light);
+    text-align: center;
+}
+
+/* Last of type, not last child: the mark is the bar's last child but no divider
+   should trail the final section. */
+.overlay-section:last-of-type {
+    border-right: none;
+}
+
+.overlay-section p {
+    margin: 0 0 10px 0;
+    font-size: 18px;
+}
+
+/* Credit line, not a fourth control: it wraps to its own row under the
+   sections, so the bar keeps the width the controls need. */
+#overlay-attribution {
+    flex: 0 0 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.4rem;
+    margin-top: 10px;
+    padding-top: 8px;
+    font-size: 0.7rem;
+    color: #ccc;
+    text-decoration: none;
+    white-space: nowrap;
+}
+
+#overlay-attribution svg {
+    display: block;
+    width: 18px;
+    height: 18px;
+}
+
+#overlay-attribution:hover {
+    color: var(--text-light);
+}
+
+.nav-buttons,
+.language-buttons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.language-buttons {
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.help-content {
+    margin: 20px 0;
+    line-height: 1.6;
+}
+
+/* ==========================================================================
+   4. Buttons
+   ========================================================================== */
+
+/* Shared styles for all standard buttons */
+.nav-button,
+.help-button,
+.lang-button,
+.close-button {
+    background-color: var(--bg-btn);
+    border: var(--border-btn);
+    border-radius: var(--radius-btn);
+    color: var(--text-light);
+    cursor: pointer;
+    text-align: center;
+}
+
+/* Shared hover/active state */
+.nav-button:hover,
+.help-button:hover,
+.close-button:hover,
+.lang-button.active {
+    background-color: var(--bg-btn-hover);
+}
+
+/* Individual button tweaks */
+.nav-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    height: 34px;
+    padding: 0 10px;
+    margin: 0 5px;
+    font-size: 18px;
+    line-height: 1;
+}
+
+.help-button,
+.lang-button {
+    padding: 8px 15px;
+}
+
+.close-button {
+    padding: 8px 20px;
+    margin-top: 20px;
+}
+
+/* Cinematic visit: white movie-camera icon inline with the ◀/▶ arrows, indigo accent when running */
+.cinematic-button {
+    padding: 0 8px;
+}
+
+.cinematic-button svg {
+    display: block;
+}
+
+.cinematic-button.active {
+    border-color: #6366f1;
+    background-color: rgba(99, 102, 241, 0.3);
+    box-shadow: 0 0 8px rgba(99, 102, 241, 0.6);
+}
+
+/* Minimize tab on the bar's top edge: collapses the overlay to one row of
+   controls parked at the top, beside the map button, so plaques under the
+   artworks stay visible. */
+#overlay-collapse {
+    position: absolute;
+    top: -23px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 44px;
+    height: 22px;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--bg-overlay);
+    border: var(--border-light);
+    border-bottom: none;
+    border-radius: 8px 8px 0 0;
+    color: var(--text-light);
+    cursor: pointer;
+}
+
+#overlay-collapse:hover {
+    background-color: var(--bg-popup);
+}
+
+#overlay-collapse svg {
+    transition: transform 0.2s;
+}
+
+/* Up = send the bar to the top; down = bring it back. */
+#permanent-overlay.collapsed #overlay-collapse svg {
+    transform: rotate(180deg);
+}
+
+/* Map button: top/left 20px, 44px wide; the bar sits 12px to its right. */
+#permanent-overlay.collapsed {
+    top: 20px;
+    bottom: auto;
+    left: 76px;
+    transform: none;
+    width: auto;
+    height: 44px;
+    box-sizing: border-box;
+    flex-wrap: nowrap;
+    padding: 0 6px;
+    border-radius: 22px;
+}
+
+#permanent-overlay.collapsed #overlay-collapse {
+    position: static;
+    order: 99;
+    transform: none;
+    width: 34px;
+    height: 34px;
+    margin-left: 5px;
+    border: var(--border-btn);
+    border-radius: 50%;
+    background-color: var(--bg-btn);
+}
+
+#permanent-overlay.collapsed #overlay-collapse:hover {
+    background-color: var(--bg-btn-hover);
+}
+
+#permanent-overlay.collapsed #artwork-section,
+#permanent-overlay.collapsed #navigation-section > p,
+#permanent-overlay.collapsed #plaques-label,
+#permanent-overlay.collapsed #overlay-attribution {
+    display: none !important;
+}
+
+#permanent-overlay.collapsed .overlay-section {
+    padding: 0 8px;
+}
+
+/* ==========================================================================
+   5. Content Toggling
+   ========================================================================== */
+
+.help-image {
+    max-width: 150px; /* Adjust as needed */
+    height: auto;
+    display: inline-block; /* Change to inline-block to allow images to sit next to text */
+    vertical-align: middle;
+    margin: 0 5px; /* Adjust margin for better spacing */
+}
+
+.desktop-image {
+    display: block;
+}
+
+
+.help-text {
+    display: none;
+}
+
+.help-text.active {
+    display: block;
+}
+
+/* ==========================================================================
+   6. Media Queries (Mobile First approach would be better, but preserving structure)
+   ========================================================================== */
+
+@media screen and (max-width: 600px) {
+    #permanent-overlay {
+        width: 100%;
+        bottom: 10px;
+        padding: 8px;
+        border-radius: 0;
+    }
+
+    .overlay-section {
+        padding: 0 4px;
+    }
+
+    .overlay-section p {
+        font-size: 14px;
+        margin-bottom: 8px;
+    }
+
+    /* On its own row the mark costs the bar no width, so the words stay. */
+    #overlay-attribution {
+        margin-top: 8px;
+        padding-top: 6px;
+    }
+
+    .nav-button,
+    .help-button {
+        font-size: 16px;
+    }
+
+    #permanent-overlay.collapsed {
+        top: 12px;
+        bottom: auto;
+        left: 58px;
+        width: auto;
+        height: 38px;
+        padding: 0 4px;
+        border-radius: 19px;
+    }
+
+    #permanent-overlay.collapsed .nav-button {
+        height: 30px;
+    }
+
+    #permanent-overlay.collapsed #overlay-collapse {
+        width: 30px;
+        height: 30px;
+    }
+
+    .help-image {
+        max-width: 50px; /* Adjust as needed */
+    }
+
+    #help-popup {
+        width: 90%;
+        padding: 20px;
+        max-height: 80vh;
+    }
+}

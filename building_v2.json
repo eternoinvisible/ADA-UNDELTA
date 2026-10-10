@@ -1,0 +1,136 @@
+{
+  "root": {
+    "parent": "none",
+    "resource": "root.glb",
+    "template": "T_root_school_B.glb",
+    "Teléfonos": {
+      "resource": "Teléfonos.glb",
+      "resource_type": "door"
+    }
+  },
+  "Teléfonos": {
+    "parent": "root",
+    "resource": "Teléfonos.glb",
+    "template": "T_pannels_school_B.glb",
+    "phone-5": {
+      "resource": "/Teléfonos/phone-5.png",
+      "resource_type": "image",
+      "width": "84.83",
+      "height": "120.00",
+      "location": "[8.990,15.100,2.000]",
+      "vector": "[-1.0,0.0]",
+      "metadata": "ID #0 phone-5"
+    },
+    "phone-1": {
+      "resource": "/Teléfonos/phone-1.png",
+      "resource_type": "image",
+      "width": "84.83",
+      "height": "120.00",
+      "location": "[8.990,8.000,2.000]",
+      "vector": "[-1.0,0.0]",
+      "metadata": "ID #1 phone-1"
+    },
+    "phone-design-02": {
+      "resource": "/Teléfonos/phone-design-02.jpg",
+      "resource_type": "image",
+      "width": "84.75",
+      "height": "120.00",
+      "location": "[8.990,0.000,2.000]",
+      "vector": "[-1.0,0.0]",
+      "metadata": "ID #2 phone-design-02"
+    },
+    "phone-design-04": {
+      "resource": "/Teléfonos/phone-design-04.jpg",
+      "resource_type": "image",
+      "width": "84.75",
+      "height": "120.00",
+      "location": "[8.990,-8.000,2.000]",
+      "vector": "[-1.0,0.0]",
+      "metadata": "ID #3 phone-design-04"
+    },
+    "phone-design-05": {
+      "resource": "/Teléfonos/phone-design-05.jpg",
+      "resource_type": "image",
+      "width": "84.75",
+      "height": "120.00",
+      "location": "[8.990,-15.100,2.000]",
+      "vector": "[-1.0,0.0]",
+      "metadata": "ID #4 phone-design-05"
+    },
+    "phone-3": {
+      "resource": "/Teléfonos/phone-3.png",
+      "resource_type": "image",
+      "width": "84.83",
+      "height": "120.00",
+      "location": "[-8.990,12.750,2.000]",
+      "vector": "[1.0,0.0]",
+      "metadata": "ID #5 phone-3"
+    },
+    "phone-design-01": {
+      "resource": "/Teléfonos/phone-design-01.jpg",
+      "resource_type": "image",
+      "width": "84.75",
+      "height": "120.00",
+      "location": "[-8.990,4.250,2.000]",
+      "vector": "[1.0,0.0]",
+      "metadata": "ID #6 phone-design-01"
+    },
+    "phone-2": {
+      "resource": "/Teléfonos/phone-2.png",
+      "resource_type": "image",
+      "width": "84.83",
+      "height": "120.00",
+      "location": "[-8.990,-4.250,2.000]",
+      "vector": "[1.0,0.0]",
+      "metadata": "ID #7 phone-2"
+    },
+    "phone-6": {
+      "resource": "/Teléfonos/phone-6.png",
+      "resource_type": "image",
+      "width": "84.83",
+      "height": "120.00",
+      "location": "[-8.990,-12.750,2.000]",
+      "vector": "[1.0,0.0]",
+      "metadata": "ID #8 phone-6"
+    },
+    "phone-design-03": {
+      "resource": "/Teléfonos/phone-design-03.jpg",
+      "resource_type": "image",
+      "width": "84.75",
+      "height": "120.00",
+      "location": "[5.200,16.990,2.000]",
+      "vector": "[0.0,-1.0]",
+      "metadata": "ID #9 phone-design-03"
+    },
+    "phone-4": {
+      "resource": "/Teléfonos/phone-4.png",
+      "resource_type": "image",
+      "width": "84.83",
+      "height": "120.00",
+      "location": "[-5.200,16.990,2.000]",
+      "vector": "[0.0,-1.0]",
+      "metadata": "ID #10 phone-4"
+    },
+    "phone-design-06": {
+      "resource": "/Teléfonos/phone-design-06.jpg",
+      "resource_type": "image",
+      "width": "84.75",
+      "height": "120.00",
+      "location": "[4.300,-16.990,2.000]",
+      "vector": "[0.0,1.0]",
+      "metadata": "ID #11 phone-design-06"
+    },
+    "root": {
+      "resource": "root.glb",
+      "resource_type": "door"
+    }
+  },
+  "Technical": {
+    "ambientLight": 0.5,
+    "pointLight": 50,
+    "style": "school",
+    "show_plaques": false,
+    "show_frames": true,
+    "skip_hub": false
+  }
+}
